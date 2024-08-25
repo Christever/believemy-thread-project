@@ -1,8 +1,27 @@
 "use client";
 import Button from "@/components/Button/Button";
+import { setCookie } from "cookies-next";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Pass() {
+    // Variable
+    const router = useRouter();
+
+    // Function
+    const onContinue = () => {
+        // Generate a new cookie
+        setCookie("guest", "true");
+
+        // Redirection
+        router.push("/");
+    };
+
+    const onReturn = () => {
+        // Redirection
+        router.push("/login");
+    };
     return (
         <div className="w-[300px] mx-auto">
             {/* Title */}
@@ -66,23 +85,9 @@ export default function Pass() {
                 connecter avec un compte Instagram.
             </div>
             <div className="mt-5">
-                {/* <button
-                    className="
-                    bg-white 
-                    text-black 
-                    w-full 
-                    px-2 py-3 
-                    rounded-full
-                    hover:bg-gray-300
-                    duration-200"
-                >
-                    Utiliser sans profil
-                </button> */}
                 <div className="">
                     <Button
-                        onClick={() => {
-                            alert("Hello");
-                        }}
+                        onClick={() => onContinue()}
                         bg="white"
                         text="black"
                         hover={"bg-gray-300"}
@@ -92,6 +97,7 @@ export default function Pass() {
                 </div>
                 <div className="mt-4">
                     <Button
+                        onClick={() => onReturn()}
                         bg="black"
                         text="white"
                         hover={"bg-threads-gray-dark"}
