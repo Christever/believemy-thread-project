@@ -15,7 +15,7 @@ export default function Layout({ children }) {
             </div>
 
             {/* Content */}
-            <div className="flex-1 z-10 pt-[24vw]">{children}</div>
+            <div className="flex-1 z-10 pt-[20vw]">{children}</div>
             {/* Footer */}
             <Footer />
         </div>

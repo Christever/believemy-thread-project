@@ -4,9 +4,7 @@ export default function Login() {
     return (
         <>
             {/* Title */}
-            <h1 className="text-white text-xl text-bold text-center">
-                Comment souhaitez-vous utiliser Threads ?
-            </h1>
+            <h1 className="title">Comment souhaitez-vous utiliser Threads ?</h1>
 
             {/* Signin & Signout */}
             <div className="mt-5 w-[500px] mx-auto">
