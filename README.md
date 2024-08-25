@@ -2,6 +2,6 @@
 
 ## Projet pour la formation BELIEVEMY
 
-### Formation Rocket Promotion Margaret Hamilton
+### option continuer sans profil:
 
 ![imag threads](images/threads01.PNG "option continuer sans profil")
