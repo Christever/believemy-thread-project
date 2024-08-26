@@ -1,16 +1,36 @@
 "use client";
 import { createUser } from "@/actions/create-user";
 import Button from "@/components/Buttons/Button";
+import { checkEmail } from "@/utils/check-email-syntax";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function Singup() {
+    const router = useRouter();
+
     const prepareCreateUser = async (formdata) => {
         const user = formdata.get("username");
         const pseudo = formdata.get("pseudo");
         const email = formdata.get("email");
         const password = formdata.get("password");
 
-        await createUser(user, pseudo, email, password);
+        // If a field is empty
+        if (!user || !pseudo || !email || !password) {
+            return toast.error("Aucun champs ne doit être vide!");
+        }
+
+        // Check email
+        // if (!checkEmail(email)) {
+        //     return toast.error("Champ email invalide !");
+        // }
+        try {
+            await createUser(user, pseudo, email, password);
+        } catch (error) {
+            return toast.error(error.message);
+        }
+        toast.success("Votre compte a bien été créé !");
+        router.push("/login/signin");
     };
     return (
         <div className="text-white md:w-[440px] mx-auto w-full">
