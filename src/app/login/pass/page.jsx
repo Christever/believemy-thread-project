@@ -1,5 +1,6 @@
 "use client";
-import Button from "@/components/Button/Button";
+import Button from "@/components/Buttons/Button";
+
 import { setCookie } from "cookies-next";
 
 import Link from "next/link";
@@ -86,23 +87,8 @@ export default function Pass() {
             </div>
             <div className="mt-5">
                 <div className="">
-                    <Button
-                        onClick={() => onContinue()}
-                        bg="white"
-                        text="black"
-                        hover={"bg-gray-300"}
-                    >
+                    <Button onClick={() => onContinue()}>
                         Utiliser sans profil
-                    </Button>
-                </div>
-                <div className="mt-4">
-                    <Button
-                        onClick={() => onReturn()}
-                        bg="black"
-                        text="white"
-                        hover={"bg-threads-gray-dark"}
-                    >
-                        Retour
                     </Button>
                 </div>
             </div>
