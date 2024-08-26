@@ -6,31 +6,31 @@ export default function Index() {
         {
             _id: "1",
             content: "Premier post",
-            pseudo: "john doe",
+            pseudo: "johndoe",
             profile: "/picture.png",
         },
         {
             _id: "2",
             content: "deuxieme post",
-            pseudo: "john doe",
+            pseudo: "johndoe",
             profile: "/picture.png",
         },
         {
             _id: "3",
             content: "troisieme post",
-            pseudo: "john doe",
+            pseudo: "johndoe",
             profile: "/picture.png",
         },
         {
             _id: "4",
             content: "quatrieme post",
-            pseudo: "john doe",
+            pseudo: "johndoe",
             profile: "/picture.png",
         },
         {
             _id: "5",
             content: "cinquieme post",
-            pseudo: "john doe",
+            pseudo: "johndoe",
             profile: "/picture.png",
         },
     ];
