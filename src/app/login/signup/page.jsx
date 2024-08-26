@@ -45,18 +45,21 @@ export default function Singup() {
                     className="input"
                     name="pseudo"
                     placeholder="Pseudo"
+                    required
                 />
                 <input
                     type="email"
                     className="input"
                     name="email"
                     placeholder="Email"
+                    required
                 />
                 <input
                     type="password"
                     className="input"
                     name="password"
                     placeholder="Mot de passe"
+                    required
                 />
                 <Button>S'incrire</Button>
             </form>
