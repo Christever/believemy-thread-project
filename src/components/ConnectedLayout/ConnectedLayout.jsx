@@ -10,7 +10,7 @@ export default function ConnecterLayout({ children }) {
     const pathname = usePathname();
     console.log(pathname);
     return (
-        <section className="flex flex-col min-h-screen px-4">
+        <section className="flex flex-col min-h-screen px-4 ">
             {/* Header */}
             <header className="flex items-center justify-between py-4">
                 {/* Nav */}
