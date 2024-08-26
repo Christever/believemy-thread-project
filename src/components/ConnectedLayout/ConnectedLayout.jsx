@@ -14,7 +14,7 @@ export default function ConnecterLayout({ children }) {
             {/* Header */}
             <header className="flex items-center justify-between py-4">
                 {/* Nav */}
-                <nav className="absolute left-0 right-0 top-0 flex justify-center py-7 gap-5">
+                <nav className="absolute left-0 right-0 top-0 flex justify-center py-7 gap-5 z-0">
                     <Link href={"/"}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -61,14 +61,10 @@ export default function ConnecterLayout({ children }) {
                 />
 
                 {/* Button */}
-                <div>
-                    <Button
-                        onClick={() => {
-                            alert("Click");
-                        }}
-                    >
-                        Se connecter
-                    </Button>
+                <div className="z-10">
+                    <Link href={"/login"}>
+                        <Button>Se connecter</Button>
+                    </Link>
                 </div>
             </header>
 
