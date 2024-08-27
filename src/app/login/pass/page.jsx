@@ -18,11 +18,6 @@ export default function Pass() {
         // Redirection
         router.push("/");
     };
-
-    const onReturn = () => {
-        // Redirection
-        router.push("/login");
-    };
     return (
         <div className="w-[300px] mx-auto">
             {/* Title */}

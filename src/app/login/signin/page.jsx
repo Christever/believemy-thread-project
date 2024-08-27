@@ -38,10 +38,8 @@ export default function Signin() {
         } catch (error) {
             return toast.error(error.message);
         }
-
-        setCookie("connected", "true");
         toast.success("Vous êtes maintenant connecté !");
-
+        setCookie("connected", "true");
         // Redirect -
         router.replace("/"); // replace pour remplacer la page de connexion
     };
