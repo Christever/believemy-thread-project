@@ -4,6 +4,7 @@ import { hasCookie } from "cookies-next";
 
 export function middleware(request) {
     let isAuthenticated = false;
+    let isConnected = false;
 
     // Check if is invited user
     if (hasCookie("guest", { cookies })) {
@@ -11,11 +12,11 @@ export function middleware(request) {
     }
     // Check if is connected
     if (hasCookie("connected", { cookies })) {
-        isAuthenticated = true;
+        isConnected = true;
     }
 
     // Check if isAuthenticated
-    if (!isAuthenticated) {
+    if (!isAuthenticated && !isConnected) {
         const url = request.nextUrl.clone();
         url.pathname = "/login";
         return NextResponse.redirect(url);

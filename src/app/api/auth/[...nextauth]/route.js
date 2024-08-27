@@ -6,11 +6,11 @@ import NextAuth from "next-auth/next";
 export const authOptions = {
     providers: [
         Credentials({
-            name: "Credentials",
+            name: "credentials",
             credentials: {},
             async authorize(credentials) {
                 const { email, password } = credentials;
-                console.log(password);
+
                 try {
                     // Connect to the MongoDB cluster
                     const client = await MongoClient.connect(

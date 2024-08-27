@@ -4,14 +4,12 @@ import Footer from "../Footer/Footer";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Button from "@/components/Buttons/Button";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 export default function ConnecterLayout({ children }) {
     // Variable
     const pathname = usePathname();
     const { data: session } = useSession();
-
-    console.log(session);
 
     return (
         <section className="flex flex-col min-h-screen px-4 ">
@@ -67,7 +65,9 @@ export default function ConnecterLayout({ children }) {
                 {/* Button */}
                 <div className="z-10">
                     {session?.user?.email ? (
-                        <Button withoutMarginTop>Se deconnecter</Button>
+                        <Button withoutMarginTop onClick={() => signOut()}>
+                            Se deconnecter
+                        </Button>
                     ) : (
                         <Link href={"/login"}>
                             <Button>Se connecter</Button>
