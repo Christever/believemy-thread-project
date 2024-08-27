@@ -21,9 +21,9 @@ export default function Singup() {
         }
 
         // Check email
-        // if (!checkEmail(email)) {
-        //     return toast.error("Champ email invalide !");
-        // }
+        if (!checkEmail(email)) {
+            return toast.error("Champ email invalide !");
+        }
         try {
             await createUser(user, pseudo, email, password);
         } catch (error) {
@@ -81,7 +81,7 @@ export default function Singup() {
                     placeholder="Mot de passe"
                     required
                 />
-                <Button>S'incrire</Button>
+                <Button formButton>S'incrire</Button>
             </form>
             <div className="flex items-center mt-4 justify-center">
                 <div className="border-t border-threads-gray-light w-1/4"></div>

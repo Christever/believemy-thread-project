@@ -50,7 +50,7 @@ export default function Signin() {
                 </div>
 
                 <Link href={"/login/signup"}>
-                    <Button>S' inscrire</Button>
+                    <Button formButton>S' inscrire</Button>
                 </Link>
             </div>
         </>

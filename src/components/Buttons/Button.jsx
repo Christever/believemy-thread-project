@@ -1,8 +1,17 @@
-export default function Button({ children, onClick, withoutMarginTop }) {
+import { useFormStatus } from "react-dom";
+
+export default function Button({
+    children,
+    onClick,
+    withoutMarginTop,
+    formButton,
+}) {
+    const { pending } = useFormStatus();
     return (
         <>
             <button
                 onClick={onClick}
+                disabled={formButton && pending}
                 className={`
                     text-black 
                     bg-white 
@@ -15,6 +24,8 @@ export default function Button({ children, onClick, withoutMarginTop }) {
                     p-4
                     border
                     border-threads-gray-light
+                    disabled:opacity-50
+                    disabled:cursor-not-allowed
                 `}
             >
                 {children}
