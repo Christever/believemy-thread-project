@@ -1,11 +1,49 @@
 "use client";
 import Button from "@/components/Buttons/Button";
+import { checkEmail } from "@/utils/check-email-syntax";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { signIn } from "next-auth/react";
+import { setCookie } from "cookies-next";
 
 export default function Signin() {
-    const prepareLogin = (formdata) => {
+    // Variables
+    const router = useRouter();
+
+    // Functions
+    const prepareLogin = async (formdata) => {
         const email = formdata.get("email");
         const password = formdata.get("password");
+
+        if (!email || !password) {
+            return toast.error("Les champs doivent etre remplis !");
+        }
+
+        if (!checkEmail(email)) {
+            return toast.error("Email invalide !");
+        }
+
+        // SignIn the user
+        try {
+            const response = await signIn("credentials", {
+                email,
+                password,
+                redirect: false,
+            });
+
+            if (response.error) {
+                return toast.error(response.error);
+            }
+        } catch (error) {
+            return toast.error(error.message);
+        }
+
+        setCookie("connected", "true");
+        toast.success("Vous êtes maintenant connecté !");
+
+        // Redirect -
+        router.replace("/"); // replace pour remplacer la page de connexion
     };
     return (
         <>

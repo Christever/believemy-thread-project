@@ -9,10 +9,13 @@ export function middleware(request) {
     if (hasCookie("guest", { cookies })) {
         isAuthenticated = true;
     }
-    if (!isAuthenticated) {
-        // Check if is connected
+    // Check if is connected
+    if (hasCookie("connected", { cookies })) {
+        isAuthenticated = true;
+    }
 
-        // Check if isAuthenticated
+    // Check if isAuthenticated
+    if (!isAuthenticated) {
         const url = request.nextUrl.clone();
         url.pathname = "/login";
         return NextResponse.redirect(url);

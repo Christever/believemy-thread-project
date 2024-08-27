@@ -8,7 +8,7 @@ import Button from "@/components/Buttons/Button";
 export default function ConnecterLayout({ children }) {
     // Variable
     const pathname = usePathname();
-    console.log(pathname);
+
     return (
         <section className="flex flex-col min-h-screen px-4 ">
             {/* Header */}

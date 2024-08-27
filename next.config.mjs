@@ -7,6 +7,7 @@ export default (env) => {
                 MONGODB_CLIENT:
                     "mongodb+srv://christian:46eqNdBAYFqHkXhD@cluster0.ipigw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
                 MONGODB_DATABASE: "threads",
+                NEXTAUTH_SECRET: "jzgqmbvaxfgcxwvyuxszcguzytbrds",
             },
         };
     } else {
@@ -15,6 +16,7 @@ export default (env) => {
                 MONGODB_CLIENT:
                     "mongodb+srv://christian:46eqNdBAYFqHkXhD@cluster0.ipigw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
                 MONGODB_DATABASE: "threads",
+                NEXTAUTH_SECRET: "jzgqmbvaxfgcxwvyuxszcguzytbrds",
             },
         };
     }

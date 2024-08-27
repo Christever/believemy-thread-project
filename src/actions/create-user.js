@@ -2,7 +2,6 @@
 
 import { checkEmail } from "@/utils/check-email-syntax";
 import { MongoClient } from "mongodb";
-import { toast } from "react-toastify";
 import bcrypt from "bcrypt";
 
 export const createUser = async (username, pseudo, email, password) => {
@@ -50,16 +49,16 @@ export const createUser = async (username, pseudo, email, password) => {
         const passwordENcrypted = await bcrypt.hash(password, 10);
 
         // FOURTH: Create the user
-        // await db.collection("users").insertOne({
-        //     username,
-        //     pseudo,
-        //     email,
-        //     password: passwordENcrypted,
-        //     profil: "/picture.png",
-        //     bio: "-",
-        //     url: "",
-        //     creation: new Date(),
-        // });
+        await db.collection("users").insertOne({
+            username,
+            pseudo,
+            email,
+            password: passwordENcrypted,
+            profil: "/picture.png",
+            bio: "-",
+            url: "",
+            creation: new Date(),
+        });
     } catch (error) {
         await client.close;
         throw new Error(error);
