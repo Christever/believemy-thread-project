@@ -11,12 +11,9 @@ export function middleware(request) {
         isAuthenticated = true;
     }
     // Check if is connected
-    if (hasCookie("connected", { cookies })) {
-        isConnected = true;
-    }
 
     // Check if isAuthenticated
-    if (!isAuthenticated && !isConnected) {
+    if (!isAuthenticated) {
         const url = request.nextUrl.clone();
         url.pathname = "/login";
         return NextResponse.redirect(url);

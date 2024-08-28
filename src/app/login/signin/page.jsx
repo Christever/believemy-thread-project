@@ -4,7 +4,7 @@ import { checkEmail } from "@/utils/check-email-syntax";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { setCookie } from "cookies-next";
 import Singup from "../signup/page";
 
@@ -41,8 +41,6 @@ export default function Signin() {
         }
         toast.success("Vous êtes maintenant connecté !");
 
-        // setCookie("connected", "true");
-        Singup;
         // Redirect -
         router.replace("/"); // replace pour remplacer la page de connexion
     };
