@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
-export default function Singup() {
+export default function Signup() {
     const router = useRouter();
 
     const prepareCreateUser = async (formdata) => {

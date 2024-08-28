@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { signIn } from "next-auth/react";
 import { setCookie } from "cookies-next";
+import Singup from "../signup/page";
 
 export default function Signin() {
     // Variables
@@ -41,6 +42,7 @@ export default function Signin() {
         toast.success("Vous êtes maintenant connecté !");
 
         // setCookie("connected", "true");
+        Singup;
         // Redirect -
         router.replace("/"); // replace pour remplacer la page de connexion
     };
@@ -78,7 +80,7 @@ export default function Signin() {
                         placeholder="Mot de passe"
                         required
                     />
-                    <Button>Se connecter</Button>
+                    <Button formButton>Se connecter</Button>
                 </form>
                 <div className="flex items-center mt-4 justify-center">
                     <div className="border-t border-threads-gray-light w-1/4"></div>
