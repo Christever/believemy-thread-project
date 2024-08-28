@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { hasCookie } from "cookies-next";
+import { deleteCookie, hasCookie } from "cookies-next";
 
 export function middleware(request) {
     let isAuthenticated = false;
