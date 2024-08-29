@@ -1,9 +1,8 @@
-import ConnecterLayout from "@/components/ConnectedLayout/ConnectedLayout";
+import ConnectedLayout from "@/components/ConnectedLayout/ConnectedLayout";
 
 export default function Search() {
     return (
-        <ConnecterLayout>
-            {/*  */}
+        <ConnectedLayout>
             <div className="mt-10 md:w-[700px] mx-auto w-full">
                 {/* Search */}
                 <form>
@@ -15,10 +14,10 @@ export default function Search() {
                 </form>
 
                 {/* Results */}
-                <div className="mt-32 text-threads-gray-light text-center">
+                <div className="mt-32 text-center text-threads-gray-light">
                     Recherchez des profils à découvrir
                 </div>
             </div>
-        </ConnecterLayout>
+        </ConnectedLayout>
     );
 }

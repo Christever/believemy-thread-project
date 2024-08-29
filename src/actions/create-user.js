@@ -1,18 +1,18 @@
 "use server";
 
-import { checkEmail } from "@/utils/check-email-syntax";
 import { MongoClient } from "mongodb";
 import bcrypt from "bcrypt";
+import { checkEmail } from "@/utils/check-emailsyntax";
 
 export const createUser = async (username, pseudo, email, password) => {
     // If a field is empty
     if (!username || !pseudo || !email || !password) {
-        throw new Error("Aucun champs ne doit être vide!");
+        return toast.error("Aucun champ ne doit être vidé !");
     }
 
-    // Check email
+    // Check if the email is valid
     if (!checkEmail(email)) {
-        throw new Error("Champ email invalide !");
+        return toast.error("Veuillez entrer un email valide !");
     }
 
     // Connect to the MongoDB cluster
@@ -36,32 +36,34 @@ export const createUser = async (username, pseudo, email, password) => {
             throw new Error("Cet email est déjà utilisé");
         }
 
-        // SECOND: verify if this pseudo is already used
+        // SECOND: Verify if this pseudo is already used
+        // Select the "users" collection
         user = await db.collection("users").find({ pseudo }).limit(1).toArray();
 
-        // if the pseudo is already used
+        // If the pseudo is already used
         if (user.length !== 0) {
             await client.close();
+
             throw new Error("Ce pseudo est déjà utilisé");
         }
 
         // THIRD: Encrypt the password
-        const passwordENcrypted = await bcrypt.hash(password, 10);
+        const encryptedPassword = await bcrypt.hash(password, 10);
 
         // FOURTH: Create the user
         await db.collection("users").insertOne({
             username,
             pseudo,
             email,
-            password: passwordENcrypted,
-            profil: "/picture.png",
+            password: encryptedPassword,
+            profile: "/picture.png",
             bio: "-",
             url: "",
             creation: new Date(),
         });
-    } catch (error) {
-        await client.close;
-        throw new Error(error);
+    } catch (e) {
+        await client.close();
+        throw new Error(e);
     }
 
     await client.close();

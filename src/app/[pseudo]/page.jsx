@@ -1,60 +1,62 @@
 "use client";
-import ConnecterLayout from "@/components/ConnectedLayout/ConnectedLayout";
+
+import ConnectedLayout from "@/components/ConnectedLayout/ConnectedLayout";
 import Post from "@/components/Post/Post";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
 export default function Profile() {
-    // Variable
+    // Variables
     const params = useParams();
     const pseudo = params.pseudo.slice(3);
-
     const posts = [
         {
             _id: "1",
-            content: "Premier post",
+            content: "Bienvenue sur mon tout nouveau profil Threads !",
             pseudo: "johndoe",
             profile: "/picture.png",
         },
         {
             _id: "2",
-            content: "deuxieme post",
+            content: "Bienvenue sur mon tout nouveau profil Threads !",
             pseudo: "johndoe",
             profile: "/picture.png",
         },
         {
             _id: "3",
-            content: "troisieme post",
+            content: "Bienvenue sur mon tout nouveau profil Threads !",
             pseudo: "johndoe",
             profile: "/picture.png",
         },
         {
             _id: "4",
-            content: "quatrieme post",
+            content: "Bienvenue sur mon tout nouveau profil Threads !",
             pseudo: "johndoe",
             profile: "/picture.png",
         },
         {
             _id: "5",
-            content: "cinquieme post",
+            content: "Bienvenue sur mon tout nouveau profil Threads !",
             pseudo: "johndoe",
             profile: "/picture.png",
         },
     ];
+
     return (
-        <ConnecterLayout>
+        <ConnectedLayout>
             <div className="mt-10 md:w-[700px] mx-auto text-white">
                 {/* Infos */}
                 <div className="flex justify-between gap-4">
                     {/* Data */}
                     <div>
                         <h1 className="text-3xl font-semibold">John Doe</h1>
-                        <div className="">@{pseudo}</div>
-                        {/* Bio */}
-                        <div className="mt-5">-</div>
-                        <div className="mt-5 text-blue-500 hover:text-blue-400 hover:cursor-pointer duration-150">
-                            <a href="https://steverlynck.fr" target="_blank">
-                                https://steverlynck.fr
+                        <div className="text-threads-gray-light mt-2">
+                            @{pseudo}
+                        </div>
+                        <div className="mt-5 whitespace-pre-line">-</div>
+                        <div className="mt-5 text-blue-500 hover:text-blue-400 duration-150">
+                            <a href="https://believemy.com" target="_blank">
+                                https://believemy.com
                             </a>
                         </div>
                     </div>
@@ -62,8 +64,8 @@ export default function Profile() {
                     {/* Photo */}
                     <div>
                         <Image
-                            src={"/picture.png"}
-                            alt="user"
+                            src="/picture.png"
+                            alt="User"
                             width={100}
                             height={100}
                             className="rounded-full object-cover"
@@ -72,19 +74,24 @@ export default function Profile() {
                 </div>
 
                 {/* Tabs */}
-                <div className="mt-10 flex">
+                <div className="flex mt-10">
                     {/* Threads */}
-                    <div className="flex-1 border-b  border-white pb-4 px-4 text-center hover:text-white hover:border-white duration-150 cursor-pointer">
+                    <div className="flex-1 border-b border-white pb-4 px-4 text-center hover:text-white hover:border-white duration-150 cursor-pointer">
                         Threads
                     </div>
 
-                    {/* Response */}
-                    <div className="tab">Reponses</div>
+                    {/* Responses */}
+                    <div className="flex-1 border-b border-threads-gray-light pb-4 px-4 text-center text-threads-gray-light hover:text-white hover:border-white duration-150 cursor-pointer">
+                        Réponses
+                    </div>
 
-                    {/* Repost */}
-                    <div className="tab">Republication</div>
+                    {/* Reposts */}
+                    <div className="flex-1 border-b border-threads-gray-light pb-4 px-4 text-center text-threads-gray-light hover:text-white hover:border-white duration-150 cursor-pointer">
+                        Republications
+                    </div>
                 </div>
-                {/* Post */}
+
+                {/* Posts */}
                 <div>
                     {posts.map((post) => (
                         <div key={post._id}>
@@ -93,6 +100,6 @@ export default function Profile() {
                     ))}
                 </div>
             </div>
-        </ConnecterLayout>
+        </ConnectedLayout>
     );
 }

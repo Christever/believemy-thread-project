@@ -8,7 +8,7 @@ export default function Post({ post }) {
             <div>
                 <Image
                     src={post.profile}
-                    alt="user"
+                    alt="User"
                     width={50}
                     height={50}
                     className="rounded-full object-cover"
@@ -16,7 +16,7 @@ export default function Post({ post }) {
             </div>
             {/* Content */}
             <div className="text-white w-full">
-                {/* infos */}
+                {/* Infos */}
                 <div className="flex items-center justify-between">
                     <Link href={`/@${post.pseudo}`}>
                         <b>{post.pseudo}</b>
@@ -25,6 +25,8 @@ export default function Post({ post }) {
                         Il y a 1 heure
                     </div>
                 </div>
+
+                {/* Text */}
                 <div className="mt-3 whitespace-pre-line">{post.content}</div>
             </div>
         </div>

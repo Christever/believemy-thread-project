@@ -36,17 +36,11 @@
 .auth-method {
     @apply border rounded-3xl border-threads-gray-light p-5 bg-threads-gray hover:bg-gray-900 duration-150;
 }
-
 .title {
-    @apply text-white text-xl font-bold text-center;
+    @apply text-center font-bold text-white text-xl;
 }
 
 /* User */
 .user-button {
     @apply border border-threads-gray-light rounded-xl py-3 w-full text-center hover:bg-threads-gray-light duration-150 cursor-pointer mt-3;
-}
-
-/* Profil */
-.tab {
-    @apply flex-1 border-b text-threads-gray-light border-threads-gray-light pb-4 px-4 text-center hover:text-white hover:border-white duration-150 cursor-pointer;
 }

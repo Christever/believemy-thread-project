@@ -6,16 +6,18 @@ import NextAuth from "next-auth/next";
 export const authOptions = {
     providers: [
         Credentials({
-            name: "credentials",
+            name: "Credentials",
             credentials: {},
+
             async authorize(credentials) {
                 const { email, password } = credentials;
 
                 try {
                     // Connect to the MongoDB cluster
                     const client = await MongoClient.connect(
-                        process.env.MONGODB_CLIENT
+                        process.env.MONGODB_CLIENT,
                     );
+
                     // Connect to the MongoDB database
                     const db = client.db(process.env.MONGODB_DATABASE);
 
@@ -27,38 +29,41 @@ export const authOptions = {
                         .limit(1)
                         .toArray();
 
-                    // If the email is not found
+                    // If the email is not used
                     if (user.length === 0) {
                         await client.close();
+
                         throw new Error("Cet utilisateur n'existe pas");
                     }
 
                     // SECOND: Verify the password
-
                     const isPasswordValid = await bcrypt.compare(
                         password,
-                        user[0].password
+                        user[0].password,
                     );
 
+                    // If the password isn't valid
                     if (!isPasswordValid) {
                         await client.close();
-                        throw new Error("Le mot de passe est invalide");
+
+                        throw new Error("Le mot de passe est incorrect");
                     }
 
-                    // THIRD: Our user isauthenticated
-                    // Format user DONT ASS SENSITIVE DATA LIKE PASSWORD
+                    // THIRD: Our user is authenticated
+                    // Format user DONT ASS SENSITIVE DATA LIKE A PASSWORD
                     user = user.map((user) => ({
                         _id: user._id.toString(),
                         username: user.username,
                         pseudo: user.pseudo,
                         email: user.email,
-                        profil: user.profil,
+                        profile: user.profile,
                     }))[0];
 
                     await client.close();
+
                     return user;
-                } catch (error) {
-                    throw new Error(error.message);
+                } catch (e) {
+                    throw new Error(e.message);
                 }
             },
         }),
@@ -70,16 +75,7 @@ export const authOptions = {
     pages: {
         signIn: "/login/signin",
     },
-    callbacks: {
-        async jwt({ token, user }) {
-            user && (token.user = user);
-            return token;
-        },
-        async session({ session, user, token }) {
-            session.user = token.user;
-            return session;
-        },
-    },
+    callbacks: {},
 };
 
 const handler = NextAuth(authOptions);
