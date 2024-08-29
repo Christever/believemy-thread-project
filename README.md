@@ -2,10 +2,6 @@
 
 ## Projet pour la formation BELIEVEMY
 
-### Accueil
+### (29/08/2024) -> mise en ligne du projet suivant la source de
 
-![image threads](images/accueil.PNG "Accueil")
-
-### option continuer sans profil:
-
-![image threads](images/threads01.PNG "option continuer sans profil")
+### Believemy (believemy-threads-projet-7)
